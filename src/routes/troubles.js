@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const sql = `
       SELECT id, title, category, createdAt 
-      FROM troubles ORDER BY createdAt`;
+      FROM troubles ORDER BY createdAt DESC`;
   
     const troubles = await query(sql);
 
@@ -70,7 +70,7 @@ router.delete('/:id', async (req, res) => {
     const { id } = req.params;
 
     const sql = 'DELETE FROM troubles WHERE id = ?';
-    
+
     const results = await query(sql, [id]);
     res.status(200).send(results);
   } catch (error) {
