@@ -12,5 +12,6 @@ app.use(express.json());
  
 app.use('/api/signin', routes.signin);
 app.use('/api/signup', routes.signup);
+app.use('/api/troubles', routes.troubles);
 
 app.listen(3001, () => console.log('서버가 3001 포트에서 가동 중입니다.'));
