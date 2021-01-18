@@ -3,11 +3,29 @@ const router = express.Router();
 const { query } = require('../database/model');
 const auth = require('../auth');
 
+router.get('/home', async (req, res) => {
+  try {
+    const sql = `
+      SELECT id, title, category, createdAt 
+      FROM item ORDER BY createdAt DESC LIMIT 10`;
+  
+    const items = await query(sql);
+
+    res.status(200).send(items);
+  } catch (error) {
+    res.status(500).send({ error: { message: error.message }});
+  }
+});
+
 router.get('/troubles', async (req, res) => {
   try {
     const sql = `
       SELECT id, title, category, createdAt 
-      FROM item ORDER BY createdAt DESC`;
+      FROM item WHERE category IN (
+        'html', 'css', 'js', 'mysql', 'sqlite', 'mongodb', 'nodejs', 'webpack',
+        'babel', 'jest', 'electron', 'aws'
+      )
+      ORDER BY createdAt DESC`;
   
     const items = await query(sql);
 
@@ -21,7 +39,27 @@ router.get('/beginner', async (req, res) => {
   try {
     const sql = `
       SELECT id, title, category, createdAt 
-      FROM item ORDER BY createdAt DESC`;
+      FROM item WHERE category IN (
+        'basic'
+      )
+      ORDER BY createdAt DESC`;
+  
+    const items = await query(sql);
+
+    res.status(200).send(items);
+  } catch (error) {
+    res.status(500).send({ error: { message: error.message }});
+  }
+});
+
+router.get('/algorithm', async (req, res) => {
+  try {
+    const sql = `
+      SELECT id, title, category, createdAt 
+      FROM item WHERE category IN (
+        'algorithm'
+      )
+      ORDER BY createdAt DESC`;
   
     const items = await query(sql);
 
