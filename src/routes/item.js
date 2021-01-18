@@ -22,7 +22,7 @@ router.get('/troubles', async (req, res) => {
     const sql = `
       SELECT id, title, category, createdAt 
       FROM item WHERE category IN (
-        'html', 'css', 'js', 'mysql', 'sqlite', 'mongodb', 'nodejs', 'webpack',
+        'html', 'css', 'dom', 'js', 'mysql', 'sqlite', 'mongodb', 'nodejs', 'webpack',
         'babel', 'jest', 'electron', 'aws'
       )
       ORDER BY createdAt DESC`;
