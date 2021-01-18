@@ -12,4 +12,5 @@ app.use(express.json());
 app.use('/api/admin', routes.admin);
 app.use('/api/item', routes.item);
 
-app.listen(3001, () => console.log('서버가 3001 포트에서 가동 중입니다.'));
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`서버가 ${port} 포트에서 가동 중입니다.`));
