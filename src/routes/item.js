@@ -3,7 +3,7 @@ const router = express.Router();
 const { query } = require('../database/model');
 const auth = require('../auth');
 
-router.get('/', async (req, res) => {
+router.get('/troubles', async (req, res) => {
   try {
     const sql = `
       SELECT id, title, category, createdAt 

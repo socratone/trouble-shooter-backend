@@ -1,7 +1,7 @@
 const admin = require('./admin');
-const troubles = require('./troubles');
+const item = require('./item');
 
 module.exports = {
   admin,
-  troubles
+  item
 }
