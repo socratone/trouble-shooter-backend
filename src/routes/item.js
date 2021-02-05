@@ -119,6 +119,12 @@ router.put('/:id', auth, async (req, res) => {
 });
 
 router.delete('/:id', auth, async (req, res) => {
+  const { password } = req.body;
+  
+  if (process.env.ADMIN_PASS !== password) {
+    return res.status(400).send({ error: { message: '비밀번호가 틀렸습니다.' }});
+  }
+
   try {
     const { id } = req.params;
 
