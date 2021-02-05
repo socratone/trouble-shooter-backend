@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   
     const token = jwt.sign(
       {
-        exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 7), // 1시간 * 24시간 * 7일
+        exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), // 1시간 * 24시간
         data: JSON.stringify(user)
       }, 
       process.env.JWT_SECRET
